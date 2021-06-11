@@ -18,6 +18,7 @@ else
   <header>
     <ul>
       <li><a href="index.php">Dashboard</a></li>
+      <li><a href="browse.php">Browse</a></li>
       <li>
         <div id="logout">
           <?php
