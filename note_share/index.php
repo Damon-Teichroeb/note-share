@@ -51,7 +51,7 @@ if (!isset($login))
 
 <div id="notes">
   <h1>Featured Notes</h1>
-  <a href="notes/test.pdf">Software Engineering II</a>
+  <embed src="notes/test.pdf#toolbar=0" type="application/pdf" width="60%" height="600px">
 </div>
 
 <?php
