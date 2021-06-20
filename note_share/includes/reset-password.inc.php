@@ -6,7 +6,10 @@ $email = $_POST['email'];
 $to      = "$email";
 $subject = 'Reset Password';
 $message = 'Please reset your password';
-$headers = 'From: noteshare@no-reply.com';
+$headers = 'From: damon@noteshare.com';
 
-mail($to, $subject, $message, $headers);
+if(mail($to, $subject, $message, $headers))
+  header("Location: ../reset-password.php?reset=success");
+else
+  echo error_get_last()['message'];
 ?>
