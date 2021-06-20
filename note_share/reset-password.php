@@ -9,6 +9,15 @@ require 'header.php';
     <input type="text" id="email" name="email" required><br>
     <input type="submit" value="Send Validation">
   </form>
+  <?php
+  if (isset($_GET['reset']))      
+    switch ($_GET['reset'])
+    {
+      case 'success':
+        echo "<p id=\"success\">Check your inbox.</p>";
+        break;
+    }
+  ?>
 </div>
 
 <?php

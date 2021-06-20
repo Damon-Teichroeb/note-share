@@ -22,7 +22,7 @@ require 'header.php';
   <?php
   // Signup error messages
   if (isset($_GET['signup']))      
-    switch($_GET['signup'])
+    switch ($_GET['signup'])
     {
       case 'invalidemail':
         echo "<p id=\"error\">Please use a valid email.</p>";

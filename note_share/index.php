@@ -29,31 +29,35 @@ if (!isset($login))
   <?php
   // Login error message
   if (isset($_GET['login']))
-      switch ($_GET['login'])
-      {
-        case 'wrongpassword':
-          echo "<p id=\"error\">Incorrect password or email!</p>";
-          break;
-      }
+    switch ($_GET['login'])
+    {
+      case 'wrongpassword':
+        echo "<p id=\"error\">Incorrect password or email!</p>";
+        break;
+    }
   // Signup notification
   if (isset($_GET['signup']))
-      switch ($_GET['signup'])
-      {
-        case 'success':
-          echo "<p id=\"success\">You have successfuly registered an account!</p>";
-          break;
-      }
+    switch ($_GET['signup'])
+    {
+      case 'success':
+        echo "<p id=\"success\">You have successfuly registered an account!</p>";
+        break;
+    }
   ?>
   </div>
 <?php
 }
 ?>
 
-<div id="notes">
+<div id="featured">
   <h1>Featured Notes</h1>
-  <embed src="notes/test.pdf#toolbar=0" type="application/pdf" width="60%" height="600px">
+  <div id="selection">
+    <embed src="notes/test.pdf#toolbar=0" type="application/pdf" width="40%" height="400px">
+    <embed src="notes/test2.pdf#toolbar=0" type="application/pdf" width="40%" height="400px">
+  </div>
 </div>
 
+<script src="scripts/main.js"></script>
 <?php
 require 'footer.php';
 ?>
