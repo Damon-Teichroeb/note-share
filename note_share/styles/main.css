@@ -11,19 +11,14 @@ body {
   line-height: 1.45;
 }
 
-h1 {
-  margin: 10px;
-}
-
 header {
   margin: 0 auto;
   padding: 0;
   background: #357;
 }
 
-#notes {
-  background: #435;
-  padding: 10px;
+embed {
+  
 }
 
 ul {
@@ -68,13 +63,28 @@ form {
   text-align: right;
 }
 
+footer {
+  background: #222;
+  padding: 10px;
+}
+
 #signup, #login, #reset {
   background: #132;
   padding: 10px;
 }
 
-footer {
-  background: #222;
+#featured {
+  background: #194;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#selection {
+  overflow-x: scroll;
+}
+
+#browse {
+  background: #523;
   padding: 10px;
 }
 
