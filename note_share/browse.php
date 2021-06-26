@@ -2,9 +2,9 @@
 require 'header.php';
 ?>
 
-<div id="browse">
+<section class="flex-container">
   <h1>Browse</h1>
-</div>
+</section>
 
 <?php
 require 'footer.php';

@@ -15,27 +15,42 @@ else
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <header>
-    <ul>
-      <li><a href="index.php">Dashboard</a></li>
-      <li><a href="browse.php">Browse</a></li>
-      <li>
-        <div id="logout">
-          <?php
-          if(isset($login))
-          {
-            $object = $dbh->query("SELECT name FROM users WHERE email = '$login';");
-            $names  = $object->fetch_assoc();
-            $name   = $names['name'];
-          ?>
-            <form action="includes/logout.inc.php" method="post">
-              <label><?php echo $name; ?>:</label>
-              <input type="submit" value="Logout">
-            </form>
-          <?php
-          }
-          ?>
-        </div>
-      </li>
-    </ul>
+  <header class="nav">
+    <?php
+    if(isset($login))
+    {
+      $object = $dbh->query("SELECT name FROM users WHERE email = '$login';");
+      $names  = $object->fetch_assoc();
+      $name   = $names['name'];
+    ?>  
+      <a class="btn" href="includes/logout.inc.php"><?php echo $name;?>: Logout</a>
+    <?php
+    }
+    else
+    {
+    ?>
+      <a class="btn" href="login.php">Login</a>
+    <?php
+    }
+    ?>
+    <a class="btn" href="index.php">Home</a>
+    <?php
+    // Signup notification
+    if (isset($_GET['signup']))
+      switch ($_GET['signup'])
+      {
+        case 'success':
+          echo "<p class=\"success\">You have successfuly registered an account!</p>";
+          break;
+      }
+      
+    // Login notification
+    if (isset($_GET['login']))
+      switch ($_GET['login'])
+      {
+        case 'success':
+          echo "<p class=\"success\">You have successfuly logged in to your account!</p>";
+          break;
+      }
+    ?>
   </header>
