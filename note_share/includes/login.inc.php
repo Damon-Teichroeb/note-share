@@ -9,7 +9,10 @@ $hash   = $object->fetch_assoc();
 
 if (!password_verify($pass, $hash['password']))
 {
-  header("Location: ../index.php?login=wrongpassword&email=".$email."");
+  if(!empty($_POST["remember"]))
+    header("Location: ../login.php?login=wrongpassword&email=".$email."&remember=checked");
+  else
+    header("Location: ../login.php?login=wrongpassword&email=".$email."");
 }
 else // Success condition
 { 
