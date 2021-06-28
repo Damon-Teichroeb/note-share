@@ -4,32 +4,45 @@ html {
 }
 
 header {
-  background: #357;
+  background: #468;
 }
 
 body {
   margin: 0 auto;
-  font-family: 'Courier New';
+  font-family: 'Varela', sans-serif;
   line-height: 1.45;
 }
 
 section {
-  background: #954;
+  background: #547;
+}
+
+.filler {
+  height: 700px;
 }
 
 footer {
   background: #222;
 }
 
+.success {
+  color: lime;
+}
+
+.error {
+  color: red;
+}
+
 .btn {
   background: #357;
-  color: #aaa;
+  color: #fff;
   margin: 2px 3px;
   padding: 5px;
   text-decoration: none;
-  border: 2px solid #aaa;
-  border-radius: 10px;
+  border: 4px solid #8cf;
   box-shadow: 2px 2px 2px #000;
+  border-bottom-color: #269;
+  border-right-color: #269;
 }
 
 .btn:hover {
@@ -38,7 +51,9 @@ footer {
 
 .nav {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 0;
 }
 
 .flex-container {
@@ -54,10 +69,19 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
+  padding: 4px 0;
 }
 
 .features div {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  align-items: center;
+  margin: 0 0.5%;
+  padding: 0 10px;
+  border: 1px solid black;
+  box-shadow: 4px 4px 5px #000;
+}
+
+.text-box {
+  width: 150px;
 }

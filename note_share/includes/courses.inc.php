@@ -1,0 +1,36 @@
+<?php
+$courses['AC'] = 'Accounting';
+$courses['AR'] = 'Art';
+$courses['BI'] = 'Bible';
+$courses['BB'] = 'Bible Background';
+$courses['BY'] = 'Biology';
+$courses['BA'] = 'Business Administration';
+$courses['CH'] = 'Chemistry';
+$courses['CL'] = 'Collegiate Life';
+$courses['CS'] = 'Computer Science';
+$courses['CR'] = 'Creation';
+$courses['CJ'] = 'Criminal Justice';
+$courses['ED'] = 'Education';
+$courses['EG'] = 'Engineering';
+$courses['EN'] = 'English';
+$courses['FC'] = 'Family/Consumer Science';
+$courses['FN'] = 'Finance';
+$courses['HI'] = 'History';
+$courses['MK'] = 'Marketing';
+$courses['MA'] = 'Mathematics';
+$courses['MI'] = 'Missions';
+$courses['LA'] = 'Modern Languages';
+$courses['MU'] = 'Music';
+$courses['NU'] = 'Nursing';
+$courses['OA'] = 'Office Administration';
+$courses['PE'] = 'Physical Education';
+$courses['PY'] = 'Physics';
+$courses['PL'] = 'Political Science';
+$courses['PR'] = 'Practical Training';
+$courses['PW'] = 'Professional Writing';
+$courses['PS'] = 'Psychology';
+$courses['SC'] = 'Science, General';
+$courses['SCV'] = 'Science, General';
+$courses['SP'] = 'Speech';
+$courses['PM'] = 'Sport Management';
+?>
