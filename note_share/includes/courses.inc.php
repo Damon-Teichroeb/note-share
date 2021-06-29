@@ -30,7 +30,6 @@ $courses['PR'] = 'Practical Training';
 $courses['PW'] = 'Professional Writing';
 $courses['PS'] = 'Psychology';
 $courses['SC'] = 'Science, General';
-$courses['SCV'] = 'Science, General';
 $courses['SP'] = 'Speech';
 $courses['PM'] = 'Sport Management';
 ?>

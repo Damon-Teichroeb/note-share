@@ -6,7 +6,7 @@ $name   = $_POST['name'];
 $pass   = $_POST['password'];
 $repass = $_POST['repassword'];
 
-$object = $dbh->query("SELECT email from users WHERE email = '$email'");
+$object = $dbh->query("SELECT email FROM users WHERE email = '$email';");
 $exists = $object->fetch_assoc();
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))

@@ -1,9 +1,9 @@
 <?php
 include 'includes/dbh.inc.php';
-session_start();
 
-if (isset($_SESSION['email']))
-  $login = $_SESSION['email'];
+session_start();
+if (isset($_SESSION['id']))
+  $login = $_SESSION['id'];
 else
   $login = null;
 ?>
@@ -22,7 +22,7 @@ else
     <?php
     if (isset($login))
     {
-      $object = $dbh->query("SELECT name FROM users WHERE email = '$login';");
+      $object = $dbh->query("SELECT name FROM users WHERE id = '$login';");
       $names  = $object->fetch_assoc();
       $name   = $names['name'];
     ?>  

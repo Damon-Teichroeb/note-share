@@ -30,7 +30,9 @@ else // Success condition
   }
 
   session_start();
-  $_SESSION['email'] = $email;
+  $object         = $dbh->query("SELECT id FROM users WHERE email = '$email';");
+  $ids            = $object->fetch_row();
+  $_SESSION['id'] = $ids[0];
   
   header('Location: ../index.php?login=success');
 }
