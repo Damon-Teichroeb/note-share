@@ -22,9 +22,9 @@ else
     <?php
     if (isset($login))
     {
-      $object = $dbh->query("SELECT name FROM users WHERE id = '$login';");
+      $object = $dbh->query("SELECT users_name FROM users WHERE users_id = '$login';");
       $names  = $object->fetch_assoc();
-      $name   = $names['name'];
+      $name   = $names['users_name'];
     ?>  
       <a class="btn" href="includes/logout.inc.php"><?php echo $name;?>: Logout</a>
       <a class="btn" href="upload.php">Upload</a>
@@ -38,24 +38,23 @@ else
     <?php
     }
     ?>
-    <a class="btn" href="browse.php">Browse</a>
     <a class="btn" href="index.php">Home</a>
     <?php
-    // Signup notification
+    // Signup notifications
     if (isset($_GET['signup']))
       switch ($_GET['signup'])
       {
         case 'success':
-          echo "<p class=\"success\">You have successfuly registered an account!</p>";
+          echo "<p class=\"success\">You have successfully registered an account!</p>";
           break;
       }
       
-    // Login notification
+    // Login notifications
     if (isset($_GET['login']))
       switch ($_GET['login'])
       {
         case 'success':
-          echo "<p class=\"success\">You have successfuly logged in to your account!</p>";
+          echo "<p class=\"success\">You have successfully logged in to your account!</p>";
           break;
       }
     ?>

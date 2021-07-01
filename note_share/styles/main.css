@@ -76,6 +76,7 @@ footer {
   padding: 0 10px;
   border: 1px solid black;
   box-shadow: 4px 4px 5px #000;
+  border-radius: 10px;
 }
 
 .text-box {

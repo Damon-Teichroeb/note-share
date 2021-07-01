@@ -18,18 +18,22 @@ require 'header.php';
       <label for="year">Year:</label>
       <input class="text-box" type="number" id="year" name="year" min="1900" max="2200" step="1" value="2021" required><br>
       <label for="fall">Fall:</label>
-      <input type="radio" id="fall" value=1 name="season" checked>
+      <input type="radio" id="fall" value=0 name="season" checked>
       <label for="spring">Spring:</label>
-      <input type="radio" id="spring" value=2 name="season"><br>
+      <input type="radio" id="spring" value=1 name="season"><br>
       <input class="btn" type="submit" name="submit" value="Upload">
     </form>
   <?php
-  // Upload error message
+  // Upload notifications
   if (isset($_GET['upload']))
     switch ($_GET['upload'])
     {
-      case 'characters':
+      case 'not5':
         echo "<p class=\"error\">Please ensure that the Course Number is exactly 5 characters long.</p>";
+        break;
+
+      case 'success':
+        echo "<p class=\"success\">Your file upload was successful!</p>";
         break;
     }
 

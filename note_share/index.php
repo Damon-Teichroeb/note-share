@@ -15,10 +15,6 @@ require 'header.php';
   }
   ?>
   <div>
-    <p>Browse our selection of notes from various majors and classes!</p>
-    <a class="btn" href="browse.php">Browse</a>
-  </div>
-  <div>
     <p>Upload your notes for your peers to see!</p>
     <a class="btn" href="upload.php">Upload</a>
   </div>

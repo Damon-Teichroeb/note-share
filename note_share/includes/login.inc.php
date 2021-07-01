@@ -4,10 +4,10 @@ require 'dbh.inc.php';
 $email = $_POST['email'];
 $pass  = $_POST['password'];
 
-$object = $dbh->query("SELECT password FROM users WHERE email = '$email';");
+$object = $dbh->query("SELECT users_password FROM users WHERE users_email = '$email';");
 $hash   = $object->fetch_assoc();
 
-if (!password_verify($pass, $hash['password']))
+if (!password_verify($pass, $hash['users_password']))
 {
   if(!empty($_POST["remember"]))
     header("Location: ../login.php?login=wrongpassword&email=".$email."&remember=checked");
@@ -30,7 +30,7 @@ else // Success condition
   }
 
   session_start();
-  $object         = $dbh->query("SELECT id FROM users WHERE email = '$email';");
+  $object         = $dbh->query("SELECT users_id FROM users WHERE users_email = '$email';");
   $ids            = $object->fetch_row();
   $_SESSION['id'] = $ids[0];
   

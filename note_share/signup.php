@@ -20,7 +20,7 @@ require 'header.php';
     <input class="btn" type="submit" value="Register">
   </form>
   <?php
-  // Signup error messages
+  // Signup notifications
   if (isset($_GET['signup']))      
     switch ($_GET['signup'])
     {

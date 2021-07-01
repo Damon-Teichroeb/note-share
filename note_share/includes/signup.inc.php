@@ -6,7 +6,7 @@ $name   = $_POST['name'];
 $pass   = $_POST['password'];
 $repass = $_POST['repassword'];
 
-$object = $dbh->query("SELECT email FROM users WHERE email = '$email';");
+$object = $dbh->query("SELECT users_email FROM users WHERE users_email = '$email';");
 $exists = $object->fetch_assoc();
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -24,7 +24,7 @@ else if (!empty($exists['email']))
 else // Success condition
 {
   $hash = password_hash($pass, PASSWORD_DEFAULT);
-  $dbh->query("INSERT INTO users (email, name, password) VALUES ('$email', '$name', '$hash');");
+  $dbh->query("INSERT INTO users (users_email, users_name, users_password) VALUES ('$email', '$name', '$hash');");
   
   header("Location: ../index.php?signup=success");
 }
