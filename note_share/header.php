@@ -25,17 +25,17 @@ else
       $object = $dbh->query("SELECT users_name FROM users WHERE users_id = '$login';");
       $names  = $object->fetch_assoc();
       $name   = $names['users_name'];
-    ?>  
+      ?>  
       <a class="btn" href="includes/logout.inc.php"><?php echo $name;?>: Logout</a>
-      <a class="btn" href="upload.php">Upload</a>
-    <?php
+      <a class="btn" href="upload.php?">Upload</a>
+      <?php
     }
     else
     {
-    ?>
+      ?>
       <a class="btn" href="login.php">Login</a>
       <a class="btn" href="signup.php">Register</a>
-    <?php
+      <?php
     }
     ?>
     <a class="btn" href="index.php">Home</a>
@@ -54,7 +54,7 @@ else
       switch ($_GET['login'])
       {
         case 'success':
-          echo "<p class=\"success\">You have successfully logged in to your account!</p>";
+          echo "<p class=\"success\">You have successfully logged into your account!</p>";
           break;
       }
     ?>
