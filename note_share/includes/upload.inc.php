@@ -22,7 +22,7 @@ if (isset($_POST['submit']))
   elseif (!preg_match('/^[-0-9A-Z_\.\s]+$/i', $name))
     header("Location: ../upload.php?upload=invalidname");
   elseif (!empty($dbh->query("SELECT notes_name FROM notes WHERE users_id = '$login' AND notes_name = '$name';")->fetch_row()))
-    header("Location: ../upload.php?upload=nameexists"); // Checks to see if that name is already in the database
+    header("Location: ../upload.php?upload=nameexists"); // Checks if the current name and login are already in the database
   elseif (!preg_match('/^[A-Z]{2}[0-9]{3}$/', $course))
     header("Location: ../upload.php?upload=not5");
   elseif (!empty($teacher) && !preg_match('/^[-0-9A-Z_\.\s]+$/i', $teacher))
@@ -35,7 +35,7 @@ if (isset($_POST['submit']))
     $ids       = $object->fetch_row();
     $filename  = $ids[0].$name.'.pdf';
 
-    $uploadpath = '../notes/'.basename($filename);
+    $uploadpath = '../notes/'.$filename;
     move_uploaded_file($_FILES['file']['tmp_name'], $uploadpath);
 
     header("Location: ../upload.php?upload=success");

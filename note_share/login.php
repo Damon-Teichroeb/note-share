@@ -1,5 +1,5 @@
 <?php
-require 'header.php';
+include 'header.php';
 ?>
 
 <section class="flex-container">
@@ -10,10 +10,10 @@ require 'header.php';
     <h1>Login</h1>
     <form action="includes/login.inc.php<?php echo(isset($_GET['upload'])&&$_GET['upload']=='login')?'?upload=login':'';?>" method="post">
       <label for="email">Email:</label>
-      <input class="text-box" type="email" id="email" name="email" required
+      <input class="text-box" type="email" id="email" name="email" included
         value="<?php if(isset($_GET['email'])){echo $_GET['email'];}elseif(isset($_COOKIE['email'])){echo $_COOKIE['email'];}?>"><br>
       <label for="password">Password:</label>
-      <input class="text-box" type="password" id="password" name="password" required
+      <input class="text-box" type="password" id="password" name="password" included
         value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];}?>"><br>
       <label for="remember">Remember Login:</label>
       <input type="checkbox" id="remember" name="remember" <?php if(isset($_GET['remember'])){echo 'checked';}?>>
@@ -35,5 +35,5 @@ require 'header.php';
 </section>
 
 <?php
-require 'footer.php';
+include 'footer.php';
 ?>

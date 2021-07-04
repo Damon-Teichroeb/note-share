@@ -1,12 +1,12 @@
 <?php
-require 'header.php';
+include 'header.php';
 ?>
 
 <section class="flex-container">
   <h1>Reset Password</h1>
   <form action="includes/reset-password.inc.php" method="post">
     <label for="email">Email:</label>
-    <input type="text" class="email" name="email" required><br>
+    <input type="text" class="email" name="email" included><br>
     <input class="btn" type="submit" value="Send Validation">
   </form>
   <?php
@@ -21,5 +21,5 @@ require 'header.php';
 </section>
 
 <?php
-require 'footer.php';
+include 'footer.php';
 ?>

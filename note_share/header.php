@@ -16,6 +16,7 @@ else
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header class="nav">
@@ -24,9 +25,8 @@ else
     {
       $object = $dbh->query("SELECT users_name FROM users WHERE users_id = '$login';");
       $names  = $object->fetch_assoc();
-      $name   = $names['users_name'];
       ?>  
-      <a class="btn" href="includes/logout.inc.php"><?php echo $name;?>: Logout</a>
+      <a class="btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
       <a class="btn" href="upload.php?">Upload</a>
       <?php
     }
@@ -46,16 +46,13 @@ else
       {
         case 'success':
           echo "<p class=\"success\">You have successfully registered an account!</p>";
-          break;
       }
-      
     // Login notifications
     if (isset($_GET['login']))
       switch ($_GET['login'])
       {
         case 'success':
           echo "<p class=\"success\">You have successfully logged into your account!</p>";
-          break;
       }
     ?>
   </header>

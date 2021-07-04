@@ -1,5 +1,5 @@
 <?php
-require 'header.php';
+include 'header.php';
 ?>
 
 <section class="flex-container">
@@ -10,15 +10,15 @@ require 'header.php';
     <h1>Upload Notes</h1>
     <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
       <label for="file">Please select a <strong>pdf</strong> file from your device:</label><br>
-      <input type="file" id="file" name="file" accept="application/pdf" required><br>
+      <input type="file" id="file" name="file" accept="application/pdf" included><br>
       <label for="name">Name:</label>
-      <input class="text-box" type="text" id="name" name="name" required><br>
+      <input class="text-box" type="text" id="name" name="name" included><br>
       <label for="course">Course Number:</label>
-      <input class="text-box" type="text" id="course" name="course" placeholder="Example: CS442" required><br>
+      <input class="text-box" type="text" id="course" name="course" placeholder="Example: CS442" included><br>
       <label for="teacher">(Optional) Teacher:</label>
       <input class="text-box" type="text" id="teacher" name="teacher" placeholder="Example: Dr. Watson" ><br>
       <label for="year">Year:</label>
-      <input class="text-box" type="number" id="year" name="year" min="1900" max="2200" step="1" value="2021" required><br>
+      <input class="text-box" type="number" id="year" name="year" min="1900" max="2200" step="1" value="2021" included><br>
       <label for="fall">Fall:</label>
       <input type="radio" id="fall" value=0 name="season" checked>
       <label for="spring">Spring:</label>
@@ -37,7 +37,7 @@ require 'header.php';
           echo "<p class=\"error\">You already have a note with that name.</p>";
           break;
         case 'invalidname':
-          echo "<p class=\"error\">The name you used is invalid. Please use another name.</p>";
+          echo "<p class=\"error\">The name you used is invalid. Please avoid using special characters: !@#$%^&*()+=;':\"[]{}|\\/<></p>";
           break;
         case 'not5':
           echo "<p class=\"error\">Please ensure that the Course Number is exactly 5 characters long.</p>";
@@ -59,5 +59,5 @@ require 'header.php';
 </section>
 
 <?php
-require 'footer.php';
+include 'footer.php';
 ?>

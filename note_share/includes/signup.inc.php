@@ -1,5 +1,5 @@
 <?php
-require 'dbh.inc.php';
+include 'dbh.inc.php';
 
 $email  = $_POST['email'];
 $name   = $_POST['name'];

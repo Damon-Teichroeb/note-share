@@ -1,8 +1,8 @@
 <?php
-require 'header.php';
+include 'header.php';
 ?>
 
-<section class="features">
+<section class="flex-features">
   <?php
   if (!isset($login))
   {
@@ -21,5 +21,9 @@ require 'header.php';
 </section>
 
 <?php
-require 'footer.php';
+include 'browse-notes.php';
+?>
+
+<?php
+include 'footer.php';
 ?>
