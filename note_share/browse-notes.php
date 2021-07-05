@@ -1,6 +1,6 @@
-<section class="flex-notes" style="background: rgb(1, 146, 165);">
+<section class="flex-notes">
   <h1>Notes</h1>
-    <div class="notes">
+  <div class="notes">
     <?php
     $object = $dbh->query("SELECT notes_id, notes_name FROM notes;");
     while($note = $object->fetch_row())
@@ -9,11 +9,12 @@
     if(isset($notes))
       foreach($notes as $note)
       {
-        echo "<div>
+        echo  "<div>
                 <h3>".$note[1]."</h3>
+                <img src=\"notes/".$note[0].$note[1].".pdf\">
               </div>";
       }
     unset($notes);
     ?>
-    </div>
+  </div>
 </section>

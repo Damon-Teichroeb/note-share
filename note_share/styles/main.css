@@ -4,7 +4,7 @@ html {
 }
 
 header {
-  background: #468;
+  background: rgb(49, 149, 189);
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 section {
-  background: #547;
+  background: #468;
 }
 
 footer {
@@ -91,8 +91,7 @@ p {
   align-items: center;
   margin: 0 0.5%;
   padding: 0 10px;
-  border: 1px solid black;
-  box-shadow: 4px 4px 5px #000;
+  box-shadow: 2px 2px 4px #000;
   border-radius: 10px;
 }
 
@@ -108,4 +107,14 @@ p {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+}
+
+.notes div {
+  text-align: center;
+  background:rgb(1, 146, 165);
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
