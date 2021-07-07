@@ -17,10 +17,10 @@ include 'header.php';
         value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];}?>"><br>
       <label for="remember">Remember Login:</label>
       <input type="checkbox" id="remember" name="remember" <?php if(isset($_GET['remember'])){echo 'checked';}?>>
-      <input class="btn" type="submit" value="Login">
+      <input class="a-btn" type="submit" value="Login">
     </form>
-    <p>Don't have an account?:<a class="btn" href="signup.php">Register</a></p>
-    <p>Forgot password?:<a class="btn" href="reset-password.php">Reset Password</a></p>
+    <p>Don't have an account?: <a class="a-btn" href="signup.php">Register</a></p>
+    <p>Forgot password?: <a class="a-btn" href="reset-password.php">Reset Password</a></p>
     <?php
     // Login notifications
     if (isset($_GET['login']))

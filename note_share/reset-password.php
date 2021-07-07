@@ -7,7 +7,7 @@ include 'header.php';
   <form action="includes/reset-password.inc.php" method="post">
     <label for="email">Email:</label>
     <input type="text" class="email" name="email" included><br>
-    <input class="btn" type="submit" value="Send Validation">
+    <input class="a-btn" type="submit" value="Send Validation">
   </form>
   <?php
   if (isset($_GET['reset']))      

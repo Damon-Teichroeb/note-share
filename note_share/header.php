@@ -19,40 +19,43 @@ else
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="flex-nav">
-    <?php
-    if (isset($login))
-    {
-      $object = $dbh->query("SELECT users_name FROM users WHERE users_id = '$login';");
-      $names  = $object->fetch_assoc();
-      ?>  
-      <a class="btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
-      <a class="btn" href="upload.php?">Upload</a>
+  <header>
+    <h1>Welcome to <logo>Note Share</logo></h1>
+    <section class="flex-nav">
       <?php
-    }
-    else
-    {
+      if (isset($login))
+      {
+        $object = $dbh->query("SELECT users_name FROM users WHERE users_id = '$login';");
+        $names  = $object->fetch_assoc();
+        ?>  
+        <a class="nav-btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
+        <a class="nav-btn" href="upload.php?">Upload</a>
+        <?php
+      }
+      else
+      {
+        ?>
+        <a class="nav-btn" href="login.php">Login</a>
+        <a class="nav-btn" href="signup.php">Register</a>
+        <?php
+      }
       ?>
-      <a class="btn" href="login.php">Login</a>
-      <a class="btn" href="signup.php">Register</a>
+      <a class="nav-btn" href="index.php">Home</a>
       <?php
-    }
-    ?>
-    <a class="btn" href="index.php">Home</a>
-    <?php
-    // Signup notifications
-    if (isset($_GET['signup']))
-      switch ($_GET['signup'])
-      {
-        case 'success':
-          echo "<p class=\"success\">You have successfully registered an account!</p>";
-      }
-    // Login notifications
-    if (isset($_GET['login']))
-      switch ($_GET['login'])
-      {
-        case 'success':
-          echo "<p class=\"success\">You have successfully logged into your account!</p>";
-      }
-    ?>
+      // Signup notifications
+      if (isset($_GET['signup']))
+        switch ($_GET['signup'])
+        {
+          case 'success':
+            echo "<p class=\"success\">You have successfully registered an account!</p>";
+        }
+      // Login notifications
+      if (isset($_GET['login']))
+        switch ($_GET['login'])
+        {
+          case 'success':
+            echo "<p class=\"success\">You have successfully logged into your account!</p>";
+        }
+      ?>
+    </section>
   </header>
