@@ -10,17 +10,11 @@ $object = $dbh->query("SELECT users_email FROM users WHERE users_email = '$email
 $exists = $object->fetch_assoc();
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-{
   header("Location: ../signup.php?signup=invalidemail&name=".$name."");
-}
 else if ($pass !== $repass)
-{
   header("Location: ../signup.php?signup=passwordmismatch&name=".$name."&email=".$email."");
-}
 else if (!empty($exists['email']))
-{
   header("Location: ../signup.php?signup=duplicateemail&name=".$name."");
-}
 else // Success condition
 {
   $hash = password_hash($pass, PASSWORD_DEFAULT);

@@ -19,7 +19,7 @@ else
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="nav">
+  <header class="flex-nav">
     <?php
     if (isset($login))
     {

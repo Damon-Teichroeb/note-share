@@ -7,14 +7,29 @@
       $notes[] = $note;
 
     if(isset($notes))
+    {
       foreach($notes as $note)
       {
-        echo  "<div>
-                <h3>".$note[1]."</h3>
-                <img src=\"notes/".$note[0].$note[1].".pdf\">
-              </div>";
+        echo
+        "
+        <div onclick=\"location.search='?note=".$note[0].$note[1].".pdf'\" style=\"cursor: pointer;\">
+          <h3>".$note[1]."</h3>
+        </div>
+        ";
       }
-    unset($notes);
+      unset($notes);
+    }
     ?>
   </div>
 </section>
+
+<?php
+if (isset($_GET['note']))
+{
+  ?>
+  <section class="note-preview">
+    <iframe src="notes/<?php echo $_GET['note'];?>" width="80%" height="800"></iframe>
+  </section>
+  <?php
+}
+?>

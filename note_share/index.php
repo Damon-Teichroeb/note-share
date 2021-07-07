@@ -8,7 +8,7 @@ include 'header.php';
   {
     ?>
     <div>
-      <p>Don't have an account with us yet? signing up is easy!</p>
+      <p>Don't have an account yet? signing up is easy!</p>
       <a class="btn" href="signup.php">Register</a>
     </div>
     <?php
