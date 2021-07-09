@@ -1,5 +1,7 @@
 <section class="flex-notes">
   <h1>Notes</h1>
+  <input style="height: 30px; font-size: 1.2em;" type="text" name="search" onkeyup="showNotes(this.value)" placeholder="Search..">
+  <p>Suggestions: <span id="note-hint"></span></p>
   <div class="notes">
     <?php
     $object = $dbh->query("SELECT notes_id, notes_name FROM notes;");

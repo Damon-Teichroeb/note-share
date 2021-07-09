@@ -9,14 +9,14 @@ include 'header.php';
     ?>
     <div>
       <p>Don't have an account yet? signing up is easy!</p>
-      <a class="a-btn" href="signup.php">Register</a>
+      <a class="a-btn" href="signup.php">Register Today!</a>
     </div>
     <?php
   }
   ?>
   <div>
     <p>Upload your notes for your peers to see!</p>
-    <a class="a-btn" href="upload.php">Upload</a>
+    <a class="a-btn" href="upload.php">Start Uploading!</a>
   </div>
 </section>
 

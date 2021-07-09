@@ -1,10 +1,21 @@
 html {
   background: #000;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 header {
   background: rgb(49, 149, 189);
+  text-align: center;
+}
+
+h1 {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+p {
+  margin: 0 auto;
+  padding: 12px 0 2px 0;
 }
 
 body {
@@ -15,14 +26,22 @@ body {
 
 section {
   background: #468;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 footer {
   background: #222;
 }
 
-p {
-  margin: 10px;
+a, .a{
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover, .a:hover {
+  color: #8cf;
+  cursor: pointer;
 }
 
 .success {
@@ -35,10 +54,24 @@ p {
   color: red;
 }
 
-.btn {
+.a-btn {
+  background: aqua;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
+  color:rgb(0, 0, 0);
+  font-size: 1.0em;
+}
+
+.a-btn:hover {
+  background: rgb(0, 190, 190);
+  color:rgb(0, 0, 0);
+}
+
+.nav-btn {
   background: #357;
   color: #fff;
-  margin: 2px 3px;
+  margin: 0;
   padding: 5px;
   text-decoration: none;
   border: 4px solid #8cf;
@@ -49,20 +82,21 @@ p {
   font-size: 1.0em;
 }
 
-.btn:hover {
+.nav-btn:hover {
   box-shadow: 1px 1px 2px rgb(0, 0, 0);
-  transform: translate(2px, 2px);
+  transform: translate(0px, 2px);
 }
 
 .text-box {
   width: 150px;
 }
 
-.nav {
+.flex-nav {
+  background: inherit;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 2px 0;
+  padding: 0 0 2px 0;
 }
 
 .flex-container {
@@ -71,10 +105,6 @@ p {
   justify-content: center;
   align-items: center;
   text-align: right;
-}
-
-.flex-container .btn {
-  padding: 0 10px;
 }
 
 .flex-features {
@@ -97,7 +127,7 @@ p {
 
 .flex-notes {
   display: flex;
-  background: rgb(1, 146, 165);
+  background: rgb(0, 80, 155);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -111,10 +141,30 @@ p {
 
 .notes div {
   text-align: center;
-  background:rgb(1, 146, 165);
+  background:inherit;
   width: 200px;
   height: 200px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+.notes div:hover {
+  box-shadow: 4px 4px 4px rgb(0, 0, 0);
+  transform: translate(-2px, -2px);
+}
+
+.note-preview {
+  background: rgb(0, 150, 219);
+}
+
+.flex-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-footer div * {
+  margin: 10px;
 }

@@ -1,5 +1,6 @@
 <?php
 require 'dbh.inc.php';
+include 'courses.inc.php';
 
 session_start();
 if (isset($_SESSION['id']))
@@ -9,12 +10,12 @@ else
 
 if (isset($_POST['submit']))
 {
-  $filetype = $_FILES['file']['type'];
-  $name     = $dbh->real_escape_string($_POST['name']);
-  $course   = strtoupper(preg_replace('/[^A-Z0-9]*/i', '', $_POST['course']));
-  $teacher  = $dbh->real_escape_string($_POST['teacher']);
-  $year     = intval($_POST['year']);
-  $season   = intval($_POST['season']);
+  $filetype      = $_FILES['file']['type'];
+  $name          = $dbh->real_escape_string($_POST['name']);
+  $coursenumber  = strtoupper(preg_replace('/[^A-Z0-9]*/i', '', $_POST['course']));
+  $teacher       = $dbh->real_escape_string($_POST['teacher']);
+  $year          = intval($_POST['year']);
+  $season        = intval($_POST['season']);
 
   // Error checking
   if ($filetype != 'application/pdf')
@@ -23,14 +24,17 @@ if (isset($_POST['submit']))
     header("Location: ../upload.php?upload=invalidname");
   elseif (!empty($dbh->query("SELECT notes_name FROM notes WHERE users_id = '$login' AND notes_name = '$name';")->fetch_row()))
     header("Location: ../upload.php?upload=nameexists"); // Checks if the current name and login are already in the database
-  elseif (!preg_match('/^[A-Z]{2}[0-9]{3}$/', $course))
+  elseif (!preg_match('/^[A-Z]{2}[0-9]{3}$/', $coursenumber))
     header("Location: ../upload.php?upload=not5");
   elseif (!empty($teacher) && !preg_match('/^[-0-9A-Z_\.\s]+$/i', $teacher))
     header("Location: ../upload.php?upload=invalidteacher");
   else // Success condition
   {
-    $dbh->query("INSERT INTO notes (users_id, notes_name, notes_course, notes_teacher, notes_year, notes_season)
-                 VALUES ('$login', '$name', '$course', '$teacher', '$year', '$season');");
+    $courseletters = substr($coursenumber, 0, 2);
+    $coursename    = isset($courses[$courseletters]) ? $courses[$courseletters] : 'Unknown' ;
+
+    $dbh->query("INSERT INTO notes (users_id, notes_name, notes_course_number, notes_course_name, notes_teacher, notes_year, notes_season)
+                 VALUES ('$login', '$name', '$coursenumber', '$coursename', '$teacher', '$year', '$season');");
     $object    = $dbh->query("SELECT notes_id FROM notes WHERE users_id = '$login' AND notes_name = '$name';");
     $ids       = $object->fetch_row();
     $filename  = $ids[0].$name.'.pdf';

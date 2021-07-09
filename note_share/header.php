@@ -20,7 +20,7 @@ else
 </head>
 <body>
   <header>
-    <h1>Welcome to <logo>Note Share</logo></h1>
+    <h1><a href="index.php">Note Share</a></h1>
     <section class="flex-nav">
       <?php
       if (isset($login))
