@@ -1,0 +1,1 @@
+<iframe src="notes/<?php echo $_GET['note'];?>" width="85%" height="800"></iframe>

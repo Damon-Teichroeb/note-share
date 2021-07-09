@@ -18,7 +18,7 @@ else
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body onload="listNotes('');"> <!-- This onload is for browse-notes.php -->
   <header>
     <h1><a href="index.php">Note Share</a></h1>
     <section class="flex-nav">
@@ -55,6 +55,9 @@ else
         {
           case 'success':
             echo "<p class=\"success\">You have successfully logged into your account!</p>";
+            break;
+          case 'logout':
+            echo "<p class=\"success\">You have successfully logged out of your account!</p>";
         }
       ?>
     </section>

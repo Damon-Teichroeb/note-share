@@ -15,7 +15,7 @@ h1 {
 
 p {
   margin: 0 auto;
-  padding: 12px 0 2px 0;
+  padding: 8px 0;
 }
 
 body {
@@ -25,9 +25,8 @@ body {
 }
 
 section {
-  background: #468;
+  background: rgb(2, 121, 190);
   text-align: center;
-  padding-bottom: 10px;
 }
 
 footer {
@@ -96,7 +95,6 @@ a:hover, .a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 0 2px 0;
 }
 
 .flex-container {
@@ -132,6 +130,7 @@ a:hover, .a:hover {
   justify-content: center;
   align-items: center;
 }
+
 .notes {
   display: flex;
   flex-flow: row wrap;
@@ -142,8 +141,8 @@ a:hover, .a:hover {
 .notes div {
   text-align: center;
   background:inherit;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0);
