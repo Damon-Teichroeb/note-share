@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 06:24 PM
+-- Generation Time: Jul 09, 2021 at 09:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -33,7 +33,8 @@ CREATE TABLE `favorites` (
   `favorites_id` int(20) UNSIGNED NOT NULL,
   `favorites_liked` tinyint(1) NOT NULL DEFAULT 0,
   `favorites_disliked` tinyint(1) NOT NULL DEFAULT 0,
-  `favorites_favorited` tinyint(1) NOT NULL DEFAULT 0
+  `favorites_favorited` tinyint(1) NOT NULL DEFAULT 0,
+  `favorites_rated` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,25 +47,28 @@ CREATE TABLE `notes` (
   `users_id` int(10) UNSIGNED NOT NULL,
   `notes_id` int(10) UNSIGNED NOT NULL,
   `notes_name` varchar(50) NOT NULL,
-  `notes_course` varchar(5) NOT NULL,
+  `notes_course_number` varchar(5) NOT NULL,
+  `notes_course_name` varchar(50) NOT NULL,
   `notes_teacher` varchar(50) NOT NULL,
   `notes_year` int(4) NOT NULL,
   `notes_season` tinyint(1) UNSIGNED NOT NULL,
   `notes_likes` int(20) DEFAULT NULL,
-  `notes_dislikes` int(20) DEFAULT NULL
+  `notes_dislikes` int(20) DEFAULT NULL,
+  `notes_favorites` int(20) DEFAULT NULL,
+  `notes_rating` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notes`
 --
 
-INSERT INTO `notes` (`users_id`, `notes_id`, `notes_name`, `notes_course`, `notes_teacher`, `notes_year`, `notes_season`, `notes_likes`, `notes_dislikes`) VALUES
-(1, 1, 'SE2 Chapter 14', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL),
-(1, 2, 'SE2 Chapter 15', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL),
-(1, 3, 'SE2 Chapter 16', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL),
-(1, 4, 'SE2 Chapter 17', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL),
-(1, 5, 'SE2 Chapter 19', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL),
-(1, 6, 'SE2 Chapter 20', 'CS356', 'Dr. Sparks', 2021, 1, NULL, NULL);
+INSERT INTO `notes` (`users_id`, `notes_id`, `notes_name`, `notes_course_number`, `notes_course_name`, `notes_teacher`, `notes_year`, `notes_season`, `notes_likes`, `notes_dislikes`, `notes_favorites`, `notes_rating`) VALUES
+(1, 1, 'Software Engineering II Chapter 14', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL),
+(1, 2, 'Software Engineering II Chapter 15', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL),
+(1, 3, 'Software Engineering II Chapter 16', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL),
+(1, 4, 'Software Engineering II Chapter 17', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL),
+(1, 5, 'Software Engineering II Chapter 19', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL),
+(1, 6, 'Software Engineering II Chapter 20', 'CS356', 'Computer Science', 'Dr. Sparks', 2021, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -84,8 +88,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `users_email`, `users_name`, `users_password`) VALUES
-(1, 'hotwheeljets@hotmail.com', 'Damon', '$2y$10$5frDtIgAvYkP/ZGkGwW1d.ifzzG6GZ8Go.A8tRFXkz60lW1tXdo9.'),
-(2, 'test@hotmail.com', 'Test', '$2y$10$WhEQ9/95XBJJHq7rucoTcOO8yIEp7zREcDKp0opsGJuxfUvtHf2ni');
+(1, 'hotwheeljets@hotmail.com', 'Damon', '$2y$10$5frDtIgAvYkP/ZGkGwW1d.ifzzG6GZ8Go.A8tRFXkz60lW1tXdo9.');
 
 --
 -- Indexes for dumped tables
@@ -131,7 +134,7 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `users_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
