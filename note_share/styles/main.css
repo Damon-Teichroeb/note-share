@@ -4,8 +4,8 @@ html {
 }
 
 header {
-  background: rgb(49, 149, 189);
   text-align: center;
+  background-color: rgb(49, 149, 189);
 }
 
 h1 {
@@ -91,10 +91,12 @@ a:hover, .a:hover {
 }
 
 .flex-nav {
-  background: inherit;
+  background: rgb(49, 149, 189);
   display: flex;
   flex-direction: row;
-  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 0 0 4px 0;
 }
 
 .flex-container {
@@ -110,7 +112,11 @@ a:hover, .a:hover {
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  padding: 4px 0;
+  padding: 450px 0;
+  background-image: url('../assets/7.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: rgb(49, 149, 189);
 }
 
 .flex-features div {
@@ -121,6 +127,7 @@ a:hover, .a:hover {
   padding: 0 10px;
   box-shadow: 2px 2px 4px #000;
   border-radius: 10px;
+  background: rgb(2, 121, 190);
 }
 
 .flex-notes {
