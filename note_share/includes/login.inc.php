@@ -34,8 +34,10 @@ else // Success condition
   $ids            = $object->fetch_row();
   $_SESSION['id'] = $ids[0];
   
-  if (isset($_GET['upload']) && $_GET['upload'] == 'login')
+  if (isset($_GET['page']) && $_GET['page'] == 'upload')
     header('Location: ../upload.php?login=success');
+  elseif ($_GET['page'] == 'mynotes')
+    header('Location: ../my-notes.php?login=success');
   else
     header('Location: ../index.php?login=success');
 }

@@ -2,10 +2,7 @@
 include 'includes/dbh.inc.php';
 
 session_start();
-if (isset($_SESSION['id']))
-  $login = $_SESSION['id'];
-else
-  $login = null;
+isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +16,9 @@ else
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="listNotes('');"> <!-- This onload is for browse-notes.php -->
+  <header>
+    <h1>Welcome to Note Share!</h1>
+  </header>
   <section class="flex-nav">
     <?php
     if (isset($login))
@@ -27,6 +27,7 @@ else
       $names  = $object->fetch_assoc();
       ?>  
       <a class="nav-btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
+      <a class="nav-btn" href="my-notes.php">My Notes</a>
       <a class="nav-btn" href="upload.php?">Upload</a>
       <?php
     }
@@ -59,6 +60,3 @@ else
       }
     ?>
   </section>
-  <header>
-    <h1>Welcome to Note Share!</h1>
-  </header>

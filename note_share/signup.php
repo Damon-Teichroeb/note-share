@@ -5,18 +5,14 @@ include 'header.php';
 <section class="flex-container">
   <h1>Sign Up</h1>
   <form action="includes/signup.inc.php" method="post">
-    <label for="email">Email:</label>
-    <input class="text-box" type="email" id="email" name="email" required
+    <input class="text-box" type="email" id="email" name="email" placeholder="E-mail" required
       value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>"
     ><br>
-    <label for="name">Name:</label>
-    <input class="text-box" type="text" id="name" name="name" required
+    <input class="text-box" type="text" id="name" name="name" placeholder="Name" required
       value="<?php if(isset($_GET['name'])){echo $_GET['name'];}?>"
     ><br>
-    <label for="password">Password:</label>
-    <input class="text-box" type="password" id="password" name="password" required><br>
-    <label for="repassword">Re-Enter Your Password:</label>
-    <input class="text-box" type="password" id="repassword" name="repassword" required><br>
+    <input class="text-box" type="password" id="password" name="password" placeholder="Password" required><br>
+    <input class="text-box" type="password" id="repassword" name="repassword" placeholder="Re-enter Password" required><br>
     <input class="a-btn" type="submit" value="Register">
   </form>
   <?php
