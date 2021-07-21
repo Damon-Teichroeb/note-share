@@ -38,4 +38,5 @@ function showNote(note)
   };
   xmlhttp.open("GET", "includes/preview-notes.inc.php?note=" + note);
   xmlhttp.send();
+  window.scrollTo(0, 1000);
 }

@@ -9,8 +9,9 @@ include 'header.php';
     ?>
     <h1>Upload Notes</h1>
     <form id="upload-form" action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
-      <label for="file">Please select a <strong>pdf</strong> file from your device:</label><br>
-      <input id="file" type="file" name="file" accept="application/pdf" required><br>
+      <p>It's preferable that you upload one <strong>pdf</strong> file containing the entire class of notes for a semester.</p>
+      <label for="file">Please select a <strong>pdf</strong> file from your device:</label>
+      <input class="a-btn" id="file" type="file" name="file" accept="application/pdf" required><br><br>
       <label for="name">File Name:</label>
       <input class="text-box" type="text" id="name" name="name" required
         value="<?php if(isset($_GET['name'])){echo $_GET['name'];}?>"><br>
@@ -29,8 +30,6 @@ include 'header.php';
       <input type="radio" id="spring" value=1 name="season" <?php if(isset($_GET['season'])&&$_GET['season'] == 1){echo 'checked';}?>><br>
       <input class="a-btn" type="submit" name="submit" value="Upload">
     </form>
-    <label for="upload-bar">Uploading progress:</label>
-    <progress id="upload-bar" value="0" max="100"></progress>
     <?php
     // Upload notifications
     if (isset($_GET['upload']))

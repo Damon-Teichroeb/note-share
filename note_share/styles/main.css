@@ -178,3 +178,14 @@ a:hover, .a:hover {
 .flex-footer div * {
   margin: 10px;
 }
+
+@media only screen and (max-width: 1000px) {
+  .flex-features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-features div {
+    width: 90%;
+  }
+}
