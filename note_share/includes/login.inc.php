@@ -1,8 +1,8 @@
 <?php
 include 'dbh.inc.php';
 
-$email = $_POST['email'];
-$pass  = $_POST['password'];
+$email = $dbh->real_escape_string($_POST['email']);
+$pass  = $dbh->real_escape_string($_POST['password']);
 
 $object = $dbh->query("SELECT users_password FROM users WHERE users_email = '$email';");
 $hash   = $object->fetch_assoc();
@@ -34,10 +34,15 @@ else // Success condition
   $ids            = $object->fetch_row();
   $_SESSION['id'] = $ids[0];
   
-  if (isset($_GET['page']) && $_GET['page'] == 'upload')
-    header('Location: ../upload.php?login=success');
-  elseif ($_GET['page'] == 'mynotes')
-    header('Location: ../my-notes.php?login=success');
+  if (isset($_GET['page']))
+    switch ($_GET['page'])
+    {
+      case 'upload':
+        header('Location: ../upload.php?login=success');
+        break;
+      case 'mynotes':
+        header('Location: ../my-notes.php?login=success');
+    }
   else
     header('Location: ../index.php?login=success');
 }

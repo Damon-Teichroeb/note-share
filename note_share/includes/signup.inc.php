@@ -1,19 +1,17 @@
 <?php
 include 'dbh.inc.php';
 
-$email  = $_POST['email'];
-$name   = $_POST['name'];
-$pass   = $_POST['password'];
-$repass = $_POST['repassword'];
+$email  = $dbh->real_escape_string($_POST['email']);
+$name   = $dbh->real_escape_string($_POST['name']);
+$pass   = $dbh->real_escape_string($_POST['password']);
+$repass = $dbh->real_escape_string($_POST['repassword']);
 
-$object = $dbh->query("SELECT users_email FROM users WHERE users_email = '$email';");
-$exists = $object->fetch_assoc();
-
+// Error checking
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
   header("Location: ../signup.php?signup=invalidemail&name=".$name."");
-else if ($pass !== $repass)
+elseif ($pass !== $repass)
   header("Location: ../signup.php?signup=passwordmismatch&name=".$name."&email=".$email."");
-else if (!empty($exists['email']))
+elseif (!empty($dbh->query("SELECT users_email FROM users WHERE users_email = '$email';")->fetch_row()))
   header("Location: ../signup.php?signup=duplicateemail&name=".$name."");
 else // Success condition
 {

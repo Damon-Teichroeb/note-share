@@ -1,12 +1,8 @@
 <?php
-require 'dbh.inc.php';
+include 'dbh.inc.php';
 include 'courses.inc.php';
-
 session_start();
-if (isset($_SESSION['id']))
-  $login = $_SESSION['id'];
-else
-  $login = null;
+$login = $_SESSION['id'];
 
 if (isset($_POST['submit']))
 {
@@ -16,13 +12,15 @@ if (isset($_POST['submit']))
   $coursenumber  = strtoupper(preg_replace('/[^A-Z0-9]*/i', '', $_POST['course']));
   $teacher       = $dbh->real_escape_string($_POST['teacher']);
   $year          = intval($_POST['year']);
-  $season        = intval($_POST['season']);
+  $season        = $dbh->real_escape_string($_POST['season']);
 
   // Error checking
   if ($filetype != 'application/pdf')
     header("Location: ../upload.php?upload=wrongtype");
+  elseif (strlen($name) > 50)
+    header("Location: ../upload.php?upload=over50");
   elseif (!preg_match('/^[-0-9A-Z_\.\s]+$/i', $name))
-    header("Location: ../upload.php?upload=invalidname"); // Checks if the current name and login are already in the database
+    header("Location: ../upload.php?upload=invalidname");
   elseif (!empty($dbh->query("SELECT notes_name FROM notes WHERE users_id = '$login' AND notes_name = '$name';")->fetch_row()))
     header("Location: ../upload.php?upload=nameexists");
   elseif (!preg_match('/^[A-Z]{2}[0-9]{3}$/', $coursenumber))
@@ -45,14 +43,15 @@ if (isset($_POST['submit']))
     $dbh->query("INSERT INTO notes (users_id, users_name, notes_name, notes_course_number, notes_course_name, notes_teacher, notes_year, notes_season)
                  VALUES ('$login', '$loginname', '$name', '$coursenumber', '$coursename', '$teacher', '$year', '$season');");
 
-    // Creates the pdf file on the computer
+    // Creates the pdf file on the server
     $object     = $dbh->query("SELECT notes_id FROM notes WHERE users_id = '$login' AND notes_name = '$name';");
     $ids        = $object->fetch_row();
-    $filename   = $ids[0].$name.'.pdf';
+    $filename   = $ids[0].'-'.$name.'.pdf';
     $uploadpath = '../notes/'.$filename;
     move_uploaded_file($_FILES['file']['tmp_name'], $uploadpath);
 
     header("Location: ../upload.php?upload=success&name=".$name."&course=".$coursenumber."&teacher=".$teacher."&year=".$year."&season=".$season."");
   }
 }
+exit;
 ?>

@@ -1,11 +1,10 @@
 <?php
 include 'includes/dbh.inc.php';
-
 session_start();
 isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
+$head = basename($_SERVER['REQUEST_URI']);
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
   <title>Niwe-Hustle</title>
@@ -15,7 +14,7 @@ isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="listNotes('');"> <!-- This onload is for browse-notes.php -->
+<body onload="listNotes('', '<?php echo preg_match('/my-notes.php/', $head)?'mynotes':'';?>')"> <!-- This onload is for browse-notes.php -->
   <header>
     <h1>Welcome to Note Share!</h1>
   </header>
@@ -28,7 +27,7 @@ isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
       ?>  
       <a class="nav-btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
       <a class="nav-btn" href="my-notes.php">My Notes</a>
-      <a class="nav-btn" href="upload.php?">Upload</a>
+      <a class="nav-btn" href="upload.php">Upload</a>
       <?php
     }
     else
@@ -53,10 +52,10 @@ isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
       switch ($_GET['login'])
       {
         case 'success':
-          echo "<p class=\"success\">You have successfully logged into your account!</p>";
+          echo "<p class=\"success\">You have logged into your account!</p>";
           break;
         case 'logout':
-          echo "<p class=\"success\">You have successfully logged out of your account!</p>";
+          echo "<p class=\"success\">You have logged out of your account!</p>";
       }
     ?>
   </section>

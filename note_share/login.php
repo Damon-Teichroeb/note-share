@@ -27,6 +27,8 @@ include 'header.php';
         case 'wrongpassword':
           echo "<p class=\"error\">Incorrect password or email!</p>";
           break;
+        case 'favorites':
+          echo "<p class=\"error\">Please login to like or dislike notes!</p>";
       }
   }
   ?>
