@@ -34,9 +34,18 @@ else
   else
     $dbh->query("DELETE FROM favorites WHERE users_id = '$login' AND notes_id = '$noteid';");
 }
-$dbh->query("
-UPDATE notes
-SET notes_likes = (SELECT COUNT(*) FROM favorites WHERE notes_id = '$noteid' AND favorites_liked = 1),
-    notes_dislikes = (SELECT COUNT(*) FROM favorites WHERE notes_id = '$noteid' AND favorites_disliked = 1)
-WHERE notes_id = '$noteid';");
+
+// Counts the likes and dislikes and sets them to the note
+$dbh->query("UPDATE notes
+             SET notes_likes = (SELECT COUNT(*) FROM favorites WHERE notes_id = '$noteid' AND favorites_liked = 1),
+                 notes_dislikes = (SELECT COUNT(*) FROM favorites WHERE notes_id = '$noteid' AND favorites_disliked = 1)
+             WHERE notes_id = '$noteid';");
+$object = $dbh->query("SELECT notes_likes, notes_dislikes FROM notes WHERE notes_id = '$noteid';");
+$row    = $object->fetch_row();
+if     ($row[0] == 0)                 $rating = 0;
+elseif ($row[0] == 1 && $row[1] == 0) $rating = 1;
+else                                  $rating = floatval($row[0]) / floatval($row[1]);
+$dbh->query("UPDATE notes
+             SET notes_rating = $rating
+             WHERE notes_id = '$noteid';");
 ?>

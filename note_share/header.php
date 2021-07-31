@@ -7,16 +7,16 @@ $head = basename($_SERVER['REQUEST_URI']);
 
 <html>
 <head>
-  <title>Niwe-Hustle</title>
+  <title>Note Share</title>
   <link rel="stylesheet" href="styles/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="listNotes('', '<?php echo preg_match('/my-notes.php/', $head)?'mynotes':'';?>')"> <!-- This onload is for browse-notes.php -->
+<body onload="listNotes('<?php echo preg_match('/my-notes.php/', $head)?'mynotes':'';?>', '', '', '');"> <!-- This onload is for browse-notes.php -->
   <header>
-    <h1>Welcome to Note Share!</h1>
+    <h1>Note Share</h1>
   </header>
   <section class="flex-nav">
     <?php

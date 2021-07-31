@@ -37,15 +37,14 @@ if (isset($_POST['submit']))
     $coursename    = isset($courses[$courseletters]) ? $courses[$courseletters] : 'Unknown';
 
     // Updates any changes made from the user
-    $dbh->query("
-    UPDATE notes
-    SET notes_name          = '$name',
-        notes_course_number = '$coursenumber',
-        notes_course_name   = '$coursename',
-        notes_teacher       = '$teacher',
-        notes_year          = '$year',
-        notes_season        = '$season'
-    WHERE notes_id = '$noteid';");
+    $dbh->query("UPDATE notes
+                 SET notes_name          = '$name',
+                     notes_course_number = '$coursenumber',
+                     notes_course_name   = '$coursename',
+                     notes_teacher       = '$teacher',
+                     notes_year          = '$year',
+                     notes_season        = '$season'
+                 WHERE notes_id = '$noteid';");
 
     // Overwrites the pdf file on the server
     $oldpath    = '../notes/'.$noteid.'-'.$oldname.'.pdf';

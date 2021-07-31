@@ -10,12 +10,16 @@ header {
 
 h1 {
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
+}
+
+h3 {
+  margin: 15 auto;
 }
 
 p {
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 5px 0;
 }
 
 body {
@@ -54,6 +58,12 @@ a:hover, .a:hover {
   margin: 0 10px;
 }
 
+.text-box {
+  width: 300px;
+  height: 30px;
+  font-size: 1.2em;
+}
+
 .a-btn {
   background: aqua;
   border-radius: 10px;
@@ -84,14 +94,29 @@ a:hover, .a:hover {
 }
 
 .nav-btn:hover {
-  box-shadow: 1px 1px 2px rgb(0, 0, 0);
-  transform: translate(0px, 2px);
+  box-shadow: none;
+  transform: translate(0px, 3px);
 }
 
-.text-box {
-  width: 300px;
-  height: 30px;
-  font-size: 1.2em;
+.sort-btn {
+  background: aqua;
+  padding: 10px 10px;
+  border: none;
+  color:rgb(0, 0, 0);
+  font-size: 1.0em;
+}
+
+.sort-btn:hover {
+  cursor: pointer;
+  background: rgb(0, 190, 190);
+}
+
+.sort-btn-on {
+  background: rgb(72, 255, 0);
+  padding: 10px 10px;
+  border: none;
+  color:rgb(0, 0, 0);
+  font-size: 1.0em;
 }
 
 .flex-nav {

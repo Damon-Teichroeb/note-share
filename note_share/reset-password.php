@@ -14,7 +14,6 @@ include 'header.php';
     {
       case 'success':
         echo "<p class=\"success\">Check your inbox.</p>";
-        break;
     }
   ?>
 </section>

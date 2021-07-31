@@ -1,4 +1,4 @@
-function listNotes(search, page)
+function listNotes(page, search, id, mode)
 {
   let xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function()
@@ -8,12 +8,88 @@ function listNotes(search, page)
       document.getElementById("notes").innerHTML = this.responseText;
       if (page == 'favorites')
       {
-        document.getElementById("preview-notes").innerHTML = ''; // delete this
-        // showNote(note, page, login, likedIds, dislikedIds, search);
+        if (mode == 'Like')
+        {
+          like    = 'Liked';
+          dislike = 'Dislike';
+        }
+        else if (mode == 'Dislike')
+        {
+          dislike = 'Disliked';
+          like    = 'Like';
+        }
+        else
+        {
+          dislike = 'Dislike';
+          like    = 'Like';
+        }
+        document.getElementById("note" + id).style.border = "#fff solid 8px";
+        document.getElementById("option" + id).innerHTML = '\
+        <div id="favorites">\
+          <a id="' + like + '" href="javascript:favorites(\'' + like + '\', ' + id + ', \'' + search + '\');">' + like + '</a>\
+          <a id="' + dislike + '" href="javascript:favorites(\'' + dislike + '\', ' + id + ', \'' + search + '\');">' + dislike + '</a>\
+        </div>\
+        <a class="view" href="#frame">Preview</a>';
       }
     }
   };
-  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search + "&page=" + page);
+  let sort = document.getElementsByClassName("sort-btn-on")[0].value;
+  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search + "&page=" + page + "&sort=" + sort);
+  xmlhttp.send();
+}
+
+function sortNotes(sort, search, page)
+{
+  let recent = document.getElementById("sort-recent");
+  let old = document.getElementById("sort-old");
+  let likes = document.getElementById("sort-likes");
+  let dislikes = document.getElementById("sort-dislikes");
+  let rated = document.getElementById("sort-rated");
+  switch (sort){
+    case '1':
+      recent.setAttribute("class", "sort-btn-on");
+      old.setAttribute("class", "sort-btn");
+      likes.setAttribute("class", "sort-btn");
+      dislikes.setAttribute("class", "sort-btn");
+      rated.setAttribute("class", "sort-btn");
+      break;
+    case '2':
+      recent.setAttribute("class", "sort-btn");
+      old.setAttribute("class", "sort-btn-on");
+      likes.setAttribute("class", "sort-btn");
+      dislikes.setAttribute("class", "sort-btn");
+      rated.setAttribute("class", "sort-btn");
+      break;
+    case '3':
+      recent.setAttribute("class", "sort-btn");
+      old.setAttribute("class", "sort-btn");
+      likes.setAttribute("class", "sort-btn-on");
+      dislikes.setAttribute("class", "sort-btn");
+      rated.setAttribute("class", "sort-btn");
+      break;
+    case '4':
+      recent.setAttribute("class", "sort-btn");
+      old.setAttribute("class", "sort-btn");
+      likes.setAttribute("class", "sort-btn");
+      dislikes.setAttribute("class", "sort-btn-on");
+      rated.setAttribute("class", "sort-btn");
+      break;
+    case '5':
+      recent.setAttribute("class", "sort-btn");
+      old.setAttribute("class", "sort-btn");
+      likes.setAttribute("class", "sort-btn");
+      dislikes.setAttribute("class", "sort-btn");
+      rated.setAttribute("class", "sort-btn-on");
+  }
+  let xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function()
+  {
+    if (this.readyState == 4 && this.status == 200)
+    {
+      document.getElementById("notes").innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search +"&page=" + page + "&sort=" + sort);
   xmlhttp.send();
 }
 
@@ -24,7 +100,7 @@ function favorites(mode, id, search)
   {
     if (this.readyState == 4 && this.status == 200)
     {
-      listNotes(search, 'favorites');
+      listNotes('favorites', search, id, mode);
     }
   };
   xmlhttp.open("GET", "includes/favorites.inc.php?mode=" + mode + '&id=' + id + '&search=' + search);
@@ -51,8 +127,8 @@ function showNote(note, page, login, likedIds, dislikedIds, search)
   else if (page == 'mynotes')
   options.innerHTML = '\
   <div>\
-    <a href="#" onclick="modifyNotes(\'change\', ' + id[1] + ');">Change</a>\
-    <a href="#" onclick="modifyNotes(\'delete\', ' + id[1] + ');">Delete</a>\
+    <a href="#" onclick="modifyNotes(\'change\', \'' + note + '\');">Change</a>\
+    <a href="#" onclick="modifyNotes(\'delete\', \'' + note + '\');">Delete</a>\
   </div>\
   <a class="view" href="#frame">Preview</a>';
   else
@@ -60,14 +136,8 @@ function showNote(note, page, login, likedIds, dislikedIds, search)
     if (likedIds != '') 
     {
       likedIds = likedIds.split('-');
-      if (likedIds.indexOf(id[1]) != -1)
-      {
-        like = 'Liked';
-      }
-      else
-      {
-        like = 'Like';
-      }
+      if (likedIds.indexOf(id[1]) != -1) like = 'Liked';
+      else                               like = 'Like';
     }
     else
       like = 'Like';
@@ -75,14 +145,8 @@ function showNote(note, page, login, likedIds, dislikedIds, search)
     if (dislikedIds != '')
     {
       dislikedIds = dislikedIds.split('-');
-      if (dislikedIds.indexOf(id[1]) != -1)
-      {
-        dislike = 'Disliked';
-      }
-      else
-      {
-        dislike = 'Dislike';
-      }
+      if (dislikedIds.indexOf(id[1]) != -1) dislike = 'Disliked';
+      else                                  dislike = 'Dislike';
     }
     else
       dislike = 'Dislike';
@@ -104,8 +168,8 @@ function showNote(note, page, login, likedIds, dislikedIds, search)
   id.shift();
 
   // Updates the modify form when a new note box is selected
-  if      (document.getElementById("change-form") != null) modifyNotes('change', id[0]);
-  else if (document.getElementById("delete-form") != null) modifyNotes('delete', id[0]);
+  if      (document.getElementById("change-form") != null) modifyNotes('change', note);
+  else if (document.getElementById("delete-form") != null) modifyNotes('delete', note);
 
   // Displays the pdf of the selected note box
   let xmlhttp = new XMLHttpRequest();
@@ -120,9 +184,11 @@ function showNote(note, page, login, likedIds, dislikedIds, search)
   xmlhttp.send();
 }
 
-function modifyNotes(mode, id)
+function modifyNotes(mode, note)
 {
   let modify = document.getElementById("modify-notes");
+  let id = note.split(/[-.]/)[0];
+    note = note.split(/[-.]/)[1];
 
   if (mode == 'change')
   {
@@ -142,7 +208,7 @@ function modifyNotes(mode, id)
     modify.innerHTML = '\
     <form id="delete-form" action="includes/delete.inc.php?id=' + id + '" method="post">\
       <h2>Delete Notes</h2>\
-      <p style="font-size: 1.3em">Are you sure you want to delete this note?</p>\
+      <p style="font-size: 1.3em">Are you sure you want to delete <strong>' + note + '</strong>?</p>\
       <div>\
         <input class="a-btn" type="submit" name="answer" value="No" />\
         <input class="a-btn" type="submit" name="answer" value="Yes" />\
