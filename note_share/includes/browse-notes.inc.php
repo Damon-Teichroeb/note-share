@@ -21,25 +21,30 @@ else $login = null;
 $search = $dbh->real_escape_string($_GET['search']);
 $page   = $_GET['page'];
 
+// Adds 50 more notes if the "Show more notes" button is clicked, also in ***scripts/main.js***
+$maxLimit = 50;
+if (isset($_GET['limit'])) $limit = $_GET['limit'] + $maxLimit;
+else                       $limit = $maxLimit;
+
 if (isset($_GET['sort']))
   switch ($_GET['sort'])
   {
     case 2:
-      $sort = "ORDER BY notes_id ASC LIMIT 50";
+      $sort = "ORDER BY notes_id ASC LIMIT $limit";
       break;
     case 3:
-      $sort = "ORDER BY notes_likes DESC, notes_id DESC LIMIT 50";
+      $sort = "ORDER BY notes_likes DESC, notes_id DESC LIMIT $limit";
       break;
     case 4:
-      $sort = "ORDER BY notes_dislikes DESC, notes_id DESC LIMIT 50";
+      $sort = "ORDER BY notes_dislikes DESC, notes_id DESC LIMIT $limit";
       break;
     case 5:
-      $sort = "ORDER BY notes_rating DESC, notes_id DESC LIMIT 50";
+      $sort = "ORDER BY notes_rating DESC, notes_id DESC LIMIT $limit";
       break;
     default:
-      $sort = "ORDER BY notes_id DESC LIMIT 50";
+      $sort = "ORDER BY notes_id DESC LIMIT $limit";
   }
-else $sort = "ORDER BY notes_id DESC LIMIT 50";
+else $sort = "ORDER BY notes_id DESC LIMIT $limit";
 
 if ($page == 'mynotes')
   if (empty($search)) $sql = "SELECT * FROM notes WHERE users_id = '$login' $sort;";
@@ -72,7 +77,7 @@ if (isset($notes))
   foreach ($notes as $note)
   {
     echo "
-    <div id=\"note".$note[2]."\">
+    <div class=\"note\" id=\"note".$note[2]."\">
       <div onclick=\"showNote('".$note[2]."-".$note[3].".pdf', '$page', '$login', '$likes', '$dislikes', '$search')\">
         <h3>".$note[3]."</h3>
         <p><strong>".$note[4]."</strong>: <strong>".$note[5]."</strong></p>

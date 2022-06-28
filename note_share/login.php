@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 
 <section class="flex-container">
   <?php
@@ -17,8 +15,7 @@ include 'header.php';
       <input type="checkbox" id="remember" name="remember" <?php if(isset($_GET['remember'])){echo 'checked';}?>>
       <input class="a-btn" type="submit" value="Login">
     </form>
-    <p>Don't have an account?: <a class="a-btn" href="signup.php">Register</a></p>
-    <p>Forgot password?: <a class="a-btn" href="reset-password.php">Reset Password</a></p>
+    <p style="margin: 0 0 10px 0;">Don't have an account?: <a class="a-btn" href="signup.php">Register</a></p>
     <?php
     // Login notifications
     if (isset($_GET['login']))
@@ -28,16 +25,12 @@ include 'header.php';
           echo "<p class=\"error\">Incorrect password or email!</p>";
           break;
         case 'favorites':
-          echo "<p class=\"error\">Please login to like or dislike notes!</p>";
+          echo "<p class=\"success\">You must be logged in to like or dislike notes</p>";
       }
   }
   ?>
 </section>
 
-<?php
-include 'browse-notes.php';
-?>
+<?php include 'browse-notes.php'; ?>
 
-<?php
-include 'footer.php';
-?>
+<?php include 'footer.php'; ?>

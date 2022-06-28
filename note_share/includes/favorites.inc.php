@@ -45,7 +45,5 @@ $row    = $object->fetch_row();
 if     ($row[0] == 0)                 $rating = 0;
 elseif ($row[0] == 1 && $row[1] == 0) $rating = 1;
 else                                  $rating = floatval($row[0]) / floatval($row[1]);
-$dbh->query("UPDATE notes
-             SET notes_rating = $rating
-             WHERE notes_id = '$noteid';");
+$dbh->query("UPDATE notes SET notes_rating = $rating WHERE notes_id = '$noteid';");
 ?>

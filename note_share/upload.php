@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 
 <section class="flex-container">
   <?php
@@ -40,7 +38,7 @@ include 'header.php';
           echo "<p class=\"error\">Please ensure that the file is a <strong>pdf</strong> file.</p>";
           break;
         case 'over50':
-          echo "<p class=\"error\">That name is over 50 characters long.</p>";
+          echo "<p class=\"error\">That name is over 50 characters long. Please use a shorter name.</p>";
           break;
         case 'invalidname':
           echo "<p class=\"error\">The name you used is invalid. Please avoid using special characters: !@#$%^&*()+=;':\"[]{}|\\/<></p>";
@@ -67,10 +65,6 @@ include 'header.php';
   ?>
 </section>
 
-<?php
-include 'browse-notes.php';
-?>
+<?php include 'browse-notes.php'; ?>
 
-<?php
-include 'footer.php';
-?>
+<?php include 'footer.php'; ?>

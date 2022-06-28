@@ -1,6 +1,7 @@
 <?php
 include 'dbh.inc.php';
 include 'courses.inc.php';
+include 'note-path.inc.php';
 session_start();
 $login = $_SESSION['id'];
 
@@ -47,8 +48,8 @@ if (isset($_POST['submit']))
                  WHERE notes_id = '$noteid';");
 
     // Overwrites the pdf file on the server
-    $oldpath    = '../notes/'.$noteid.'-'.$oldname.'.pdf';
-    $uploadpath = '../notes/'.$noteid.'-'.$name.'.pdf';
+    $oldpath    = $notepath.$noteid.'-'.$oldname.'.pdf';
+    $uploadpath = $notepath.$noteid.'-'.$name.'.pdf';
     if($filetype != null)
     {
       unlink($oldpath);

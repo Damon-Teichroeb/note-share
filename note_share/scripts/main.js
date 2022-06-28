@@ -1,3 +1,6 @@
+// Adds 50 more notes if the "Show more notes" button is clicked, also in ***includes/browse-notes.inc.php***
+var maxLimit = 50;
+
 function listNotes(page, search, id, mode)
 {
   let xmlhttp = new XMLHttpRequest();
@@ -31,20 +34,51 @@ function listNotes(page, search, id, mode)
         </div>\
         <a class="view" href="#frame">Preview</a>';
       }
+
+      // Displays the "Show more notes" button if there are more than 50 notes
+      if (document.getElementsByClassName("note").length % maxLimit == 0 && document.getElementsByClassName("note").length != 0)
+        document.getElementById("more").innerHTML = '<button id="show-more" onclick="showMore(\'' + search + '\', \'' + page + '\', \'' + sort + '\');">Show more notes</button>';
+      else deleteShowMore();
     }
   };
   let sort = document.getElementsByClassName("sort-btn-on")[0].value;
-  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search + "&page=" + page + "&sort=" + sort);
+  let limit = 0;
+  if (page == 'favorites') limit = document.getElementsByClassName("note").length - maxLimit;
+  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search + "&page=" + page + "&sort=" + sort + "&limit=" + limit);
   xmlhttp.send();
+}
+
+function showMore(search, page, sort)
+{
+  let xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function()
+  {
+    if (this.readyState == 4 && this.status == 200)
+    {
+      document.getElementById("notes").innerHTML = this.responseText;
+
+      // Removes "Show more notes" if there are less than 50 notes or if the final notes have been shown
+      let limit = document.getElementsByClassName("note").length;
+      if (limit % maxLimit != 0 || limit == sentLimit) deleteShowMore();
+    }
+  };
+  let sentLimit = document.getElementsByClassName("note").length;
+  xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search +"&page=" + page + "&sort=" + sort + "&limit=" + sentLimit);
+  xmlhttp.send();
+}
+
+function deleteShowMore()
+{
+  document.getElementById("more").innerHTML = '';
 }
 
 function sortNotes(sort, search, page)
 {
-  let recent = document.getElementById("sort-recent");
-  let old = document.getElementById("sort-old");
-  let likes = document.getElementById("sort-likes");
+  let recent   = document.getElementById("sort-recent");
+  let old      = document.getElementById("sort-old");
+  let likes    = document.getElementById("sort-likes");
   let dislikes = document.getElementById("sort-dislikes");
-  let rated = document.getElementById("sort-rated");
+  let rated    = document.getElementById("sort-rated");
   switch (sort){
     case '1':
       recent.setAttribute("class", "sort-btn-on");
@@ -87,6 +121,10 @@ function sortNotes(sort, search, page)
     if (this.readyState == 4 && this.status == 200)
     {
       document.getElementById("notes").innerHTML = this.responseText;
+
+      // Displays the "Show more notes" button if there are more than 50 notes
+      if (document.getElementsByClassName("note").length % maxLimit == 0 && document.getElementsByClassName("note").length != 0)
+        document.getElementById("more").innerHTML = '<button id="show-more" onclick="showMore(\'' + search + '\', \'' + page + '\', \'' + sort + '\');">Show more notes</button>';
     }
   };
   xmlhttp.open("GET", "includes/browse-notes.inc.php?search=" + search +"&page=" + page + "&sort=" + sort);
@@ -214,6 +252,34 @@ function modifyNotes(mode, note)
         <input class="a-btn" type="submit" name="answer" value="Yes" />\
       </div>\
     </form>';
+  }
+}
+
+function settings(mode)
+{
+  let settings = document.getElementById("settings");
+  switch (mode)
+  {
+    case 'name':
+      settings.innerHTML = '\
+      <input class="text-box" type="text" name="name" placeholder="New Name" required><br>\
+      <input class="a-btn" type="submit" name="submit" value="Change Name">';
+      break;
+    case 'pass':
+      settings.innerHTML = '\
+      <input class="text-box" type="password" name="cpass" placeholder="Current Password" required><br><br>\
+      <input class="text-box" type="password" name="npass" placeholder="New Password" required><br>\
+      <input class="text-box" type="password" name="rpass" placeholder="Re-enter New Password" required><br>\
+      <input class="a-btn" type="submit" name="submit" value="Change Password">';
+      break;
+    case 'close':
+      settings.innerHTML = '\
+      <p style="font-size: 1.3em">All of your personal notes and favorites will be deleted.<br>\
+                                  Are you sure you want to close your account?</p>\
+      <div>\
+        <input class="a-btn" type="submit" name="submit" value="No">\
+        <input class="a-btn" type="submit" name="submit" value="Yes">\
+      </div>';
   }
 }
 

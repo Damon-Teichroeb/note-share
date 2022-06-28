@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 
 <section class="flex-container">
   <h1>Sign Up</h1>
@@ -23,6 +21,9 @@ include 'header.php';
       case 'invalidemail':
         echo "<p class=\"error\">Please use a valid email.</p>";
         break;
+      case 'invalidname':
+        echo "<p class=\"error\">The name you used is invalid. Please avoid using special characters: !@#$%^&*()+=;':\"[]{}|\\/<></p>";
+        break;
       case 'passwordmismatch':
         echo "<p class=\"error\">Passwords do not match.</p>";
         break;
@@ -32,10 +33,6 @@ include 'header.php';
   ?>
 </section>
 
-<?php
-include 'browse-notes.php';
-?>
+<?php include 'browse-notes.php'; ?>
 
-<?php
-include 'footer.php';
-?>
+<?php include 'footer.php'; ?>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="1" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <rect x="40.338" y="30.656" width="134.22" height="75.639" fill="none" stroke="#fff" stroke-opacity=".99608" stroke-width="20.5"/>
+ <g fill-opacity=".99608">
+  <rect x="86.398" y="89.055" width="40.21" height="96.2" ry="0" fill="#fff" stroke="#fff" stroke-width=".34105"/>
+  <path d="m62.827 90.429 87.815-0.45809-43.445-40.312z" fill="#fff"/>
+  <rect x="7.8534" y="141.32" width="195.26" height="137.12" ry="12.732" fill="#00a7dc"/>
+ </g>
+ <g fill="#fff" fill-opacity=".99608">
+  <rect x="18.803" y="150.6" width="103.88" height="9.3151" ry="4.6575"/>
+  <rect x="18.803" y="168.12" width="152.07" height="9.3151" ry="4.6575"/>
+  <rect x="19.16" y="185.25" width="107.45" height="9.3151" ry="4.6575"/>
+  <rect x="19.517" y="203.89" width="172.42" height="9.3151" ry="4.6575"/>
+  <rect x="19.874" y="222.14" width="61.042" height="9.3151" ry="4.6575"/>
+  <rect x="19.874" y="238.91" width="138.86" height="9.3151" ry="4.6575"/>
+  <rect x="19.874" y="256.79" width="172.42" height="9.3151" ry="4.6575"/>
+ </g>
+</svg>

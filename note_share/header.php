@@ -5,7 +5,7 @@ isset($_SESSION['id']) ? $login = $_SESSION['id'] : $login = null;
 $head = basename($_SERVER['REQUEST_URI']);
 ?>
 
-<html>
+<html lang="en-CA">
 <head>
   <title>Note Share</title>
   <link rel="stylesheet" href="styles/main.css">
@@ -26,6 +26,7 @@ $head = basename($_SERVER['REQUEST_URI']);
       $names  = $object->fetch_assoc();
       ?>  
       <a class="nav-btn" href="includes/logout.inc.php"><?php echo $names['users_name'];?>: Logout</a>
+      <a class="nav-btn" href="settings.php">Account Settings</a>
       <a class="nav-btn" href="my-notes.php">My Notes</a>
       <a class="nav-btn" href="upload.php">Upload</a>
       <?php
@@ -51,7 +52,7 @@ $head = basename($_SERVER['REQUEST_URI']);
     if (isset($_GET['login']))
       switch ($_GET['login'])
       {
-        case 'success':
+        case 'login':
           echo "<p class=\"success\">You have logged into your account!</p>";
           break;
         case 'logout':

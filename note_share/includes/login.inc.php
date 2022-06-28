@@ -44,7 +44,7 @@ else // Success condition
         header('Location: ../my-notes.php?login=success');
     }
   else
-    header('Location: ../index.php?login=success');
+    header('Location: ../index.php?login=login');
 }
 exit;
 ?>

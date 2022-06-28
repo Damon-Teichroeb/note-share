@@ -1,6 +1,7 @@
 <?php
 include 'dbh.inc.php';
 include 'courses.inc.php';
+include 'note-path.inc.php';
 session_start();
 $login = $_SESSION['id'];
 
@@ -37,7 +38,7 @@ if (isset($_POST['submit']))
     // Puts a dash in the $coursenumber and creates a $coursename using the $courseletters
     $coursenumber  = substr_replace($coursenumber, "-", 2, 0);
     $courseletters = substr($coursenumber, 0, 2);
-    $coursename    = isset($courses[$courseletters]) ? $courses[$courseletters] : 'Unknown' ;
+    $coursename    = isset($courses[$courseletters]) ? $courses[$courseletters] : 'Unknown';
 
     // Inserts all of the information about the file into the database
     $dbh->query("INSERT INTO notes (users_id, users_name, notes_name, notes_course_number, notes_course_name, notes_teacher, notes_year, notes_season)
@@ -47,7 +48,7 @@ if (isset($_POST['submit']))
     $object     = $dbh->query("SELECT notes_id FROM notes WHERE users_id = '$login' AND notes_name = '$name';");
     $ids        = $object->fetch_row();
     $filename   = $ids[0].'-'.$name.'.pdf';
-    $uploadpath = '../notes/'.$filename;
+    $uploadpath = $notepath.$filename;
     move_uploaded_file($_FILES['file']['tmp_name'], $uploadpath);
 
     header("Location: ../upload.php?upload=success&name=".$name."&course=".$coursenumber."&teacher=".$teacher."&year=".$year."&season=".$season."");

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username   = "sysuser_d";
-$password   = "*b6Ivs06";
+$username   = "root";
+$password   = "";
 $database   = "note_share";
 
 // Create connection

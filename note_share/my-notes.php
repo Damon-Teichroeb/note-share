@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 
 <section class="flex-container" id="modify-notes">
   <?php
@@ -48,6 +46,4 @@ else
 }
 ?>
 
-<?php
-include 'footer.php';
-?>
+<?php include 'footer.php'; ?>

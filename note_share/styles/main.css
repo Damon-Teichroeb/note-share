@@ -33,6 +33,10 @@ section {
   text-align: center;
 }
 
+form {
+  margin: 10px 0;
+}
+
 footer {
   background: #222;
 }
@@ -54,8 +58,10 @@ a:hover, .a:hover {
 
 .error {
   background-color: #000;
+  border-radius: 10px;
   color: rgb(255, 37, 37);
-  margin: 0 10px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .text-box {
@@ -80,20 +86,19 @@ a:hover, .a:hover {
 }
 
 .nav-btn {
-  background: #357;
-  color: #fff;
-  margin: 0;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  margin: 2px;
   padding: 5px;
   text-decoration: none;
-  border: 4px solid #8cf;
   box-shadow: 2px 2px 2px #000;
-  border-bottom-color: #269;
-  border-right-color: #269;
   text-align: center;
   font-size: 1.0em;
 }
 
 .nav-btn:hover {
+  background: rgb(150, 150, 150);
+  color: rgb(0, 0, 0);
   box-shadow: none;
   transform: translate(0px, 3px);
 }
@@ -109,6 +114,7 @@ a:hover, .a:hover {
 .sort-btn:hover {
   cursor: pointer;
   background: rgb(0, 190, 190);
+  color:rgb(0, 0, 0);
 }
 
 .sort-btn-on {
@@ -117,6 +123,73 @@ a:hover, .a:hover {
   border: none;
   color:rgb(0, 0, 0);
   font-size: 1.0em;
+}
+
+.settings-btn {
+  background: aqua;
+  padding: 10px 10px;
+  margin: 0 2px;
+  border: none;
+  border-radius: 10px;
+  color:rgb(0, 0, 0);
+  font-size: 1.0em;
+}
+
+.settings-btn:hover {
+  cursor: pointer;
+  background: rgb(0, 165, 165);
+  color:rgb(0, 0, 0);
+}
+
+.flex-settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#settings {
+  padding: 10px;
+  margin: 0;
+}
+
+#settings p {
+  text-align: center;
+}
+
+#settings div {
+  display: flex;
+  flex-direction: row;
+}
+
+#settings div .a-btn {
+  width: 100%;
+  margin: 0 10px;
+  font-size: 1.3em;
+}
+
+#more {
+  background-color: rgb(9, 113, 192);
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #000;
+  margin: 10px;
+}
+
+#more:hover {
+  box-shadow: #000 4px 4px 4px;
+  transform: translate(-2px, -2px);
+}
+
+#more button {
+  cursor: pointer;
+  background-color: rgb(9, 113, 192);
+  color:rgb(255, 255, 255);
+  font-size: 1.2em;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
 }
 
 .flex-nav {
@@ -149,9 +222,8 @@ a:hover, .a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
-  margin: 10px;
-  padding: 0;
+  margin: 10px 3%;
+  padding: 10px;
   box-shadow: 2px 2px 4px #000;
   border-radius: 10px;
   background-color: rgb(2, 121, 190);
